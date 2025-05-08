@@ -1,46 +1,86 @@
-var font; 
-var zero; 
-var randomNumber; 
-
 function windowResized(){
-    resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight);
 }
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(0);
- // background('white');
-  randomNumber = int(random(0,100));
-  console.log(randomNumber);
-
- 
+  textAlign(CENTER, CENTER);
+  textFont("prestige-elite-std"); 
+  textSize(32);
+  noStroke();
 }
 
-function preload() {
-  font = loadFont ('GamayWideBoldItalic.ttf');
+function mousePressed() {
+  let mainText = "THE INSTAGRAM SERVICE";
+  let baseTextSize = 100;
+  let centerX = width / 2;
+  let centerY = height / 2;
+
+  textSize(baseTextSize);
+  let txtW = textWidth(mainText);
+  let txtH = baseTextSize;
+
+  let isClicked =
+    mouseX > centerX - txtW / 2 &&
+    mouseX < centerX + txtW / 2 &&
+    mouseY > centerY - txtH / 2 &&
+    mouseY < centerY + txtH / 2;
+
+  if (isClicked) {
+    window.location.href = "2nd.html";  // ← Link now goes to 2nd.html
+  }
 }
 
 function draw() {
-  
-  fill('lightblue');
-  textSize(width/24);
-  let zero = '"service"';
-  text(zero, mouseX, mouseY,);
+  background('#edebeb');
 
-  fill('white');
-  textFont(font);
-  textSize(width/24);
-  textAlign(CENTER);
-  if (mouseIsPressed){
+  let baseTextSize = 100;
+  let hoverTextSize = 110;
+  let mainText = "THE INSTAGRAM SERVICE";
+  let centerX = width / 2;
+  let centerY = height / 2;
+
+  textSize(baseTextSize);
+  let txtW = textWidth(mainText);
+  let txtH = baseTextSize;
+
+  let isHovering =
+    mouseX > centerX - txtW / 2 &&
+    mouseX < centerX + txtW / 2 &&
+    mouseY > centerY - txtH / 2 &&
+    mouseY < centerY + txtH / 2;
+
+  if (isHovering) {
+    cursor(HAND);
+    textSize(hoverTextSize);
     
-    text('THE INSTAGRAM SERVICE',width/2,height/2);
+    let jitterX = random(-2, 2);
+    let jitterY = random(-2, 2);
+    fill('#af8ec2');
+    text(mainText, centerX + jitterX, centerY + jitterY);
+  } else {
+    cursor(ARROW);
+    textSize(baseTextSize);
+    fill('#af8ec2');
+    text(mainText, centerX, centerY);
+  }
+
+  let amtX = constrain(mouseX / width, 0, 1);
+  let amtY = constrain(mouseY / height, 0, 1);
+
+  let sophiaX = lerp(0, centerX, amtX);
+  let sophiaY = lerp(0, centerY, amtY);
+
+  let tekesteX = lerp(width, centerX, amtX);
+  let tekesteY = lerp(height, centerY, amtY);
+
+  fill(0, 159, 30);
+  textSize(100);
+  textFont("prestige-elite-std");
+  text("sophia", sophiaX, sophiaY);
+  text("tekeste", tekesteX, tekesteY);
 }
 
-if (mouseX > width*1.83/2 & mouseY > height*1.83/2){
-fill(180,0,0);
-textFont (font);
-textSize(width/60);
-    text("next",width*1.93/2, height*1.93/2);
-}
 
-}
+
+
+  

@@ -4,10 +4,6 @@ var index = 0;
 
 var font; 
 
-function preload() {
-  font = loadFont('GamayWideBoldItalic.ttf');
-}
-
 function windowResized(){
     resizeCanvas(windowWidth, windowHeight);
 }
@@ -17,12 +13,12 @@ function setup() {
 }
 
 function draw() {
-  background('black');
-  textSize(20);
-  fill('lightblue');
+  background('#edebeb');
+  textSize(width/24);
+  fill('#af8ec2');
     text("Offering personalized opportunities to", width / 7.7, height / 3 - 30);
   
-  textFont(font); 
+  textFont("prestige-elite-std"); 
   text(poetry[index], width / 1.2, height / 3 - 30);
 }
  

@@ -1,9 +1,18 @@
-
-
-html, body {
-  margin: 0;
-  padding: 0;
+#insta-link {
+  font-family: "prestige-elite-std", monospace;
+  font-size: 100px;
+  color: #af8ec2;
+  text-decoration: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease-in-out;
 }
-canvas {
-  display: block;
+
+#insta-link:hover {
+  font-size: 110px;
+  color: #d94fd5;
+  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(-0.5deg);
 }
